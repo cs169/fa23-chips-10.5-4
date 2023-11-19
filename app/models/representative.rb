@@ -5,7 +5,6 @@ class Representative < ApplicationRecord
   has_many :news_items, dependent: :delete_all
 
   def self.civic_api_to_representative_params(rep_info)
-    reps = []
 
     rep_info.officials.each_with_index do |official, index|
       ocdid_temp = ''
@@ -18,9 +17,10 @@ class Representative < ApplicationRecord
         end
       end
 
-      rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
-          title: title_temp })
-      reps.push(rep)
+      Representative.find_or_create_by(name: official.name, ocdid: ocdid_temp) do |rep|
+        rep.title = title_temp
+      end
+
     end
 
     reps
