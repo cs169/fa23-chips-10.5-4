@@ -6,6 +6,7 @@ class Representative < ApplicationRecord
 
   def self.civic_api_to_representative_params(rep_info)
 
+
     rep_info.officials.each_with_index do |official, index|
       ocdid_temp = ''
       title_temp = ''
@@ -16,13 +17,11 @@ class Representative < ApplicationRecord
           ocdid_temp = office.division_id
         end
       end
-
+      
       Representative.find_or_create_by(name: official.name, ocdid: ocdid_temp) do |rep|
         rep.title = title_temp
       end
-
     end
 
-    reps
   end
 end
