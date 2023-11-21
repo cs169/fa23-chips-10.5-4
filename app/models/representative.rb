@@ -21,7 +21,6 @@ class Representative < ApplicationRecord
           title: title_temp })
       reps.push(rep)
     end
-    
     reps
   end
 end
