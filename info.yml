@@ -1,0 +1,24 @@
+project:
+  name: 'CS169-fa23-04'
+  owner: 'fa23'
+  teamId: '04'
+  identities: {}
+  notifications:
+    email: 'felipemag07@berkeley.edu'
+  members:
+    member1:
+      name: 'Kyung-Wan'
+      surname: 'Woo' 
+      githubUsername: 'wkw8402'
+    member2:
+      name: 'Sebastian'
+      surname: 'Estrada' 
+      githubUsername: 'Sebastian34E'
+    member3:
+      name: 'Brendan'
+      surname: 'Shih' 
+      githubUsername: 'zentho'
+    member4:
+      name: 'Felipe'
+      surname: 'Magdaleno' 
+      githubUsername: 'FelipeMagda'
