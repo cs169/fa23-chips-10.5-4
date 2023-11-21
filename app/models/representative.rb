@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-#comment
 
 class Representative < ApplicationRecord
   has_many :news_items, dependent: :delete_all
@@ -17,12 +16,8 @@ class Representative < ApplicationRecord
           ocdid_temp = office.division_id
         end
       end
-
+      
       rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
           title: title_temp })
       reps.push(rep)
     end
-
-    reps
-  end
-end
