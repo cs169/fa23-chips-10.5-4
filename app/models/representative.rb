@@ -22,6 +22,5 @@ class Representative < ApplicationRecord
         rep.title = title_temp
       end
     end
-
   end
 end
