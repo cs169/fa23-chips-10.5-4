@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# comment
+# comment test
 
 class Representative < ApplicationRecord
   has_many :news_items, dependent: :delete_all
