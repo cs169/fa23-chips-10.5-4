@@ -1,15 +1,18 @@
 # frozen_string_literal: true
-#comment
+
+# comment test
 
 class Representative < ApplicationRecord
   has_many :news_items, dependent: :delete_all
 
   def self.civic_api_to_representative_params(rep_info)
+
     representatives = []
 
     rep_info.officials.each_with_index do |official, index|
       ocdid_temp = ''
       title_temp = ''
+      
 
       rep_info.offices.each do |office|
         if office.official_indices.include? index
