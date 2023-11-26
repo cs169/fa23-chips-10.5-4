@@ -1,22 +1,18 @@
-
-# Click on  
-Given("I am on the national map") do
+# Click on
+Given('I am on the national map') do
   visit root_path
 end
 
-When("I click on the state with name {string}") do |state_name|
-   # Ask Team
-   puts "hi"
+When('I click on the state with name {string}') do |state_code|
+  visit "/state/#{state_code}"
 end
 
 
-Given("I am on the state {string} page") do |state_code|
-  # Assuming the state code is provided in uppercase (e.g., 'CA')
-  state_code = state_code.upcase
-
-  # Build the URL for the state page
-  state_page_url = "/state/#{state_code}"
-
-  # Visit the constructed URL
-  visit "#{root_path}#{state_page_url}"
+Given('I am on the state {string} page') do |state_code|
+  visit "/state/#{state_code}" 
 end
+
+When('I click on the county with name {string} County and code {string} in state {string}') do |county, county_code, state_code|
+  visit "/search/#{county}%20County,%20#{state_code},%20#{county_code}" 
+end
+

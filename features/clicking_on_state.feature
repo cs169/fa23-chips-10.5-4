@@ -5,12 +5,19 @@ Feature: View State
   
 Scenario: Clicking on a state in the map
   Given I am on the national map
-  # your steps here
-  When I click on the state with name "California"
-  Then I should be on the state page for "California"
+  When I click on the state with name "CA"
 
 
-Scenario: Click on the County
-  Given I am on the state CA page
-  When I click on the county with FIPS code "045"
-  Then I should be on the representatives page
+
+Scenario: Click on the Orange County
+  Given I am on the state "CA" page
+  When I click on the county with name "Orange" County and code "059" in state "CA"
+
+
+Scenario: Click on the Fresno County
+  Given I am on the state "CA" page
+  When I click on the county with name "Fresno" County and code "019" in state "CA"
+
+Scenario: Click on the Lyon County in Nevada
+  Given I am on the state "NV" page
+  When I click on the county with name "Lyon" County and code "019" in state "NV"
