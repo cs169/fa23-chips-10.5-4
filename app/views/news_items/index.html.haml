@@ -18,13 +18,14 @@
         %table.table.table-striped.table-hover#events
           %caption
             Table of News Items for #{@representative.name}
-          %thead.thead-dark
+          %thead.thead-dark.text-left
             %tr
               %th #
               %th Name
               %th Description
               %th Posted
-              %th{ colspan: 3 } Links
+              %th{ colspan: 3 }
+                Links
           %tbody
             - @news_items.each_with_index do |item, index|
               %tr
@@ -45,4 +46,6 @@
                     %i.fas.fa-pen &nbsp;Edit
                 %td
                   = link_to representative_news_item_path(item.representative.id, item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
-                    %i.fas.fa-trash &nbsp;Delete
+                    %i.fas.fa-trash
+                    &nbsp;
+                    Delete
