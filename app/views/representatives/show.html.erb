@@ -1,0 +1,43 @@
+<!-- views/representatives/show.html.erb -->
+<div class="container text-center">
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6 rounded p-3" style="border: 2px solid #ccc;">
+      <h1 class="mt-4 mb-4 text-wrap">
+        <span class="d-block"><%= @representative.name %></span>
+      </h1>
+      <div class="mb-4">
+        <% if @representative.photo_attachment.attached? %>
+          <%= image_tag url_for(@representative.photo_attachment), alt: 'Representative Photo', class: 'img-fluid rounded-circle shadow-lg' %>
+        <% else %>
+          <p class="text-muted">No photo available</p>
+        <% end %>
+      </div>
+      <table class="table table-styled rounded">
+        <tbody>
+          <tr>
+            <th class="bg-light">Title</th>
+            <td><%= @representative.title %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">Political Party</th>
+            <td><%= @representative.political_party %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">Contact Address</th>
+            <td>
+              <% if @representative.contact_address.present? %>
+                <%= @representative.contact_address %>
+              <% else %>
+                Address information not available
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th class="bg-light">OCD ID</th>
+            <td><%= @representative.ocdid %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

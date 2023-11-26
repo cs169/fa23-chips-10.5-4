@@ -136,6 +136,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    date (3.3.4)
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
@@ -318,6 +319,10 @@ GEM
     omniauth-rails_csrf_protection (1.0.0)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    open-uri (0.4.0)
+      stringio
+      time
+      uri
     os (1.1.4)
     parallel (1.21.0)
     parser (3.0.2.0)
@@ -479,6 +484,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stringio (3.0.6)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     sysexits (1.2.0)
@@ -488,11 +494,14 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
+    time (0.3.0)
+      date
     trailblazer-option (0.1.2)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uber (0.1.0)
     unicode-display_width (1.6.1)
+    uri (0.13.0)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -539,6 +548,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  open-uri
   pg (>= 0.18, < 2.0)
   pronto
   pronto-flay

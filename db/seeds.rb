@@ -17,34 +17,34 @@ Representative.destroy_all
 SeedData.states.each { |state| State.create state }
 
 SeedData.states.each do |state|
-    state = State.find_by(symbol: state[:symbol])
-    county_filename = "lib/assets/counties_fips_data/#{state[:symbol].downcase}.json"
-    File.open(Rails.root.join(county_filename), 'r:UTF-8') do |f|
-        state.counties = JSON.parse(f.read, object_class: County)
-    end
-    state.save
+  state = State.find_by(symbol: state[:symbol])
+  county_filename = "lib/assets/counties_fips_data/#{state[:symbol].downcase}.json"
+  File.open(Rails.root.join(county_filename), 'r:UTF-8') do |f|
+    state.counties = JSON.parse(f.read, object_class: County)
+  end
+  state.save
 end
 
 SeedData.representatives.each do |rep|
-    rep_model = Representative.create(name: rep[:name])
-    rep[:news_items].each do |news_item|
-        NewsItem.create(
-            representative: rep_model,
-            title:          news_item[:title],
-            description:    news_item[:description],
-            link:           news_item[:link]
-        )
-    end
+  rep_model = Representative.create(name: rep[:name])
+  rep[:news_items].each do |news_item|
+    NewsItem.create(
+      representative: rep_model,
+      title:          news_item[:title],
+      description:    news_item[:description],
+      link:           news_item[:link]
+    )
+  end
 end
 
 SeedData.events.each do |event|
-    state = State.find_by(symbol: event[:state_symbol])
-    county = County.find_by(state_id: state.id, fips_code: event[:fips_code])
-    Event.create(
-        name:        event[:name],
-        description: event[:description],
-        county:      county,
-        start_time:  event[:start_time],
-        end_time:    event[:end_time]
-    )
+  state = State.find_by(symbol: event[:state_symbol])
+  county = County.find_by(state_id: state.id, fips_code: event[:fips_code])
+  Event.create(
+    name:        event[:name],
+    description: event[:description],
+    county:      county,
+    start_time:  event[:start_time],
+    end_time:    event[:end_time]
+  )
 end

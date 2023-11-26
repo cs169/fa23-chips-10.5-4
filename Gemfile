@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Even though this gem is only required for rake tasks, heroku needs it to run
 # pre-receive rake tasks hook so it is included for production environment.
+gem 'open-uri'
 gem 'rubyzip'
 
 gem 'date_validator'
