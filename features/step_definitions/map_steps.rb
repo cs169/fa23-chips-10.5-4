@@ -11,6 +11,6 @@ Given('I am on the state {string} page') do |state_code|
   visit "/state/#{state_code}"
 end
 
-When('I click on the county with name {string} County and code {string} in state {string}') do |county, county_code, state_code|
-  visit "/search/#{county}%20County,%20#{state_code},%20#{county_code}"
+When('I click on {string} County {string} in {string}') do |county, county_code, state|
+  visit "/search/#{county}%20County,%20#{state},%20#{county_code}"
 end

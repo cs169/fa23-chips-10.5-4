@@ -9,7 +9,4 @@ RSpec.describe LoginController, type: :controller do
     it { is_expected.to respond_to(:github) }
     it { is_expected.to respond_to(:logout) }
   end
-
-  describe 'private methods' do
-  end
 end
