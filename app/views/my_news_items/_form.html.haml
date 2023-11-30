@@ -25,8 +25,13 @@
     .form-group.row
         .col-sm-2
             = label :news_item, :representative_id, class: 'col-form-label'
-        .col-sm-10
-            = select :news_item, :representative_id, representatives_list, { include_blank: true },
-            class: 'form-control'
+        .col-sm-4
+            = select :news_item, :representative_id, representatives_list,
+            { include_blank: true }, class: 'form-control'
+    .form-group.row
+        .col-sm-2
+            = label :news_item, :issue, class: 'col-form-label'
+        .col-sm-4
+            = select :news_item, :issue, NewsItem.issues, { include_blank: true }, class: 'form-control'
     .actions
         = f.submit 'Save', class: 'btn btn-primary'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Click on
 Given('I am on the national map') do
   visit root_path
