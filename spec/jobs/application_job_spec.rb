@@ -1,4 +1,4 @@
-# spec/jobs/application_job_spec.rb
+# frozen_string_literal: true
 
 require 'rails_helper'
 
