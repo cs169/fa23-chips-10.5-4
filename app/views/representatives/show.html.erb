@@ -6,8 +6,8 @@
         <span class="d-block"><%= @representative.name %></span>
       </h1>
       <div class="mb-4">
-        <% if @representative.photo_attachment.attached? %>
-          <%= image_tag url_for(@representative.photo_attachment), alt: 'Representative Photo', class: 'img-fluid rounded-circle shadow-lg' %>
+        <% if @representative.photo %>
+          <%= image_tag url_for(@representative.photo), alt: 'Representative Photo', class: 'img-fluid rounded-circle shadow-lg' %>
         <% else %>
           <p class="text-muted">No photo available</p>
         <% end %>
