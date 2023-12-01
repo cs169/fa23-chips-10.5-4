@@ -8,7 +8,8 @@ class NewsItemsController < ApplicationController
     @news_items = @representative.news_items
   end
 
-  def show; end
+  def show
+  end
 
   private
 

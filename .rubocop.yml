@@ -30,6 +30,8 @@ AllCops:
         - lib/tasks/cucumber.rake
         - node_modules/**/*
         - vendor/**/*
+        - spec/*
+        - spec/**/*
 
 Layout/EndOfLine:
     EnforcedStyle: lf
