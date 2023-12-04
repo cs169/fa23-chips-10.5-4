@@ -1,4 +1,6 @@
 = form_for news_item, url: form_url, html: { method: form_method } do |f|
+    = hidden_field :news_item, :representative_id, value: representative_id
+    = hidden_field :news_item, :issue, value: issue
     - if news_item.errors.any?
         .alert.alert-danger
             %h2
@@ -22,16 +24,6 @@
         .col-sm-10
             = text_area :news_item, :description, { class: 'form-control',
             placeholder: 'Describe the contents of the article...' }
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :representative_id, class: 'col-form-label'
-        .col-sm-4
-            = select :news_item, :representative_id, representatives_list,
-            { include_blank: true }, class: 'form-control'
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :issue, class: 'col-form-label'
-        .col-sm-4
-            = select :news_item, :issue, NewsItem.issues, { include_blank: true }, class: 'form-control'
+
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
