@@ -8,11 +8,13 @@ class MyNewsItemsController < SessionController
 
   def new
     @news_item = NewsItem.new
+    @rep_id = params[:representative] if params[:representative]
+    @issue = params[:issue] if params[:issue]
   end
 
   # pre-form controller
   def pre
-    @news_item = NewsItem.new
+
   end
 
   def edit; end
@@ -43,6 +45,15 @@ class MyNewsItemsController < SessionController
   end
 
   private
+
+  # pre-form to new parameters
+  def news_item_default_params
+    defaults = {}
+    defaults[:representative] = params[:representative] if params[:representative]
+    defaults[:issue] = params[:issue] if params[:issue]
+
+    defaults
+  end
 
   def set_representative
     @representative = Representative.find(
