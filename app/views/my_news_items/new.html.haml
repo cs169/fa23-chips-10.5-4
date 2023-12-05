@@ -4,14 +4,17 @@
 
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        - found_representative = @representatives_list.find { |name, id| id == @rep_id.to_i }
-        - if found_representative
-            %p.text-left Representative: #{found_representative.first}
+        %h1.text-center= @articles
+
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %p.text-left Representative: #{@rep_name}
 
 
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         %p.text-left Issue: #{@issue}
+
 
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
