@@ -24,20 +24,5 @@
         .col-sm-10
             = text_area :news_item, :description, { class: 'form-control',
             placeholder: 'Describe the contents of the article...' }
-<<<<<<< HEAD
-
-=======
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :representative_id, class: 'col-form-label'
-        .col-sm-4
-            = select :news_item, :representative_id, representatives_list,
-            { include_blank: true }, class: 'form-control'
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :issue, class: 'col-form-label'
-        .col-sm-4
-            = select :news_item, :issue, @temp_issues, { include_blank: true }, class: 'form-control'
->>>>>>> bfe5ed931331ecc3c6d00601b1c86c1cb2645794
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
