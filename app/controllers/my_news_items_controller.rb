@@ -10,6 +10,11 @@ class MyNewsItemsController < SessionController
     @news_item = NewsItem.new
   end
 
+  # pre-form controller
+  def pre
+    @news_item = NewsItem.new
+  end
+
   def edit; end
 
   def create
