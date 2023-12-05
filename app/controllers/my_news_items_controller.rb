@@ -8,8 +8,8 @@ class MyNewsItemsController < SessionController
 
   def new
     @news_item = NewsItem.new
-    @rep_id = params[:representative] if params[:representative]
-    @issue = params[:issue] if params[:issue]
+    @rep_id = params[:news_item][:representative_id] if params[:news_item][:representative_id]
+    @issue = params[:news_item][:issue] if params[:news_item][:issue]
   end
 
   # pre-form controller

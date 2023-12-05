@@ -3,5 +3,19 @@
         %h1.text-center This is the pre-form page!
     
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        = link_to 'New News Item', representative_new_my_news_item_path(representative: 126, issue: 'Healthcare'), class: 'btn', role: 'button'
+        = form_tag representative_new_my_news_item_path, method: :get do
+            .form-group.row
+                .col-sm-2
+                    = label :news_item, :representative_id, class: 'col-form-label'
+                .col-sm-4
+                    = select :news_item, :representative_id, @representatives_list,
+                    { include_blank: true }, class: 'form-control'
+            .form-group.row
+                .col-sm-2
+                    = label :news_item, :issue, class: 'col-form-label'
+                .col-sm-4
+                    = select :news_item, :issue, @temp_issues, { include_blank: true }, class: 'form-control'
+            = submit_tag 'Search', class: 'btn btn-primary', role: 'button'
+    
+    
 
