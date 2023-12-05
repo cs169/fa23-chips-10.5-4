@@ -12,7 +12,17 @@
         - @articles.each_with_index do |article, index|
             .col-sm-10
                 = radio_button :news_item, :title, article['title']
-                = label :news_item, :title, "TITLE: #{article['title']}, LINK: #{article['url']}, DESCRIPTION: @{article['description']}", value: article['title']
+                %div.ml-2
+                    %h5 Title:
+                    = label :news_item, :title, article['title'], value: article['title']
+                    %br/
+                    %br/
+                    %h5 Link:
+                    %a{href: article['url']}= article['url']
+                    %br/
+                    %br/
+                    %h5 Description:
+                    %p= article['description']
                 = hidden_field :news_item, :link, value: article['url']
                 = hidden_field :news_item, :description, value: article['description']
     

@@ -11,7 +11,9 @@
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         %p.text-left Issue: #{@issue}
 
-
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %p.text-left Select an article:
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         = render 'form', news_item: @news_item,
@@ -20,6 +22,7 @@
         representatives_list: @representatives_list,
         representative_id: @rep_id, 
         issue: @issue    
+
 
 .row.mt-3
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
