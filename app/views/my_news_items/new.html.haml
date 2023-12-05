@@ -2,14 +2,30 @@
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         %h1.text-center Edit news article
 
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %p.text-left Representative: #{@rep_name}
+
+
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %p.text-left Issue: #{@issue}
+
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %p.text-left Select an article:
+.row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         = render 'form', news_item: @news_item,
         form_url: representative_new_my_news_item_path(@representative),
         form_method: :post,
-        representatives_list: @representatives_list
+        representatives_list: @representatives_list,
+        representative_id: @rep_id, 
+        issue: @issue    
+
+
+.row.mt-3
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        .clearfix.mt-3
-            .float-right
-                = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
-                    View news articles
-                    %i.fas.fa-arrow-right
+        = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
+            View news articles
+            %i.fas.fa-arrow-right

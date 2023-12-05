@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   resources :representatives, only: [:index]
   resources :representatives, only: %i[index show] do
     resources :news_items, only: %i[index show]
+    # pre-form route
+    get '/representatives/:representative_id/my_news_item/pre' => 'my_news_items#pre',
+    :as                                                    => :pre_my_news_item
     get '/representatives/:representative_id/my_news_item/new' => 'my_news_items#new',
         :as                                                    => :new_my_news_item
     post '/representatives/:representative_id/my_news_item/new', to: 'my_news_items#create'

@@ -1,4 +1,6 @@
 = form_for news_item, url: form_url, html: { method: form_method } do |f|
+    = hidden_field :news_item, :representative_id, value: representative_id
+    = hidden_field :news_item, :issue, value: issue
     - if news_item.errors.any?
         .alert.alert-danger
             %h2
@@ -7,31 +9,22 @@
                 - news_item.errors.full_messages.each do |message|
                     %li= message
     .form-group.row
-        .col-sm-2
-            = label :news_item, :title, 'Title:', class: 'col-form-label'
-        .col-sm-10
-            = text_field :news_item, :title, { class: 'form-control', placeholder: 'Brief title of article...' }
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :link, 'Link', class: 'col-form-label'
-        .col-sm-10
-            = text_field :news_item, :link, { class: 'form-control', placeholder: 'Link to external article...' }
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :description, class: 'col-form-label'
-        .col-sm-10
-            = text_area :news_item, :description, { class: 'form-control',
-            placeholder: 'Describe the contents of the article...' }
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :representative_id, class: 'col-form-label'
-        .col-sm-4
-            = select :news_item, :representative_id, representatives_list,
-            { include_blank: true }, class: 'form-control'
-    .form-group.row
-        .col-sm-2
-            = label :news_item, :issue, class: 'col-form-label'
-        .col-sm-4
-            = select :news_item, :issue, @temp_issues, { include_blank: true }, class: 'form-control'
+        - @articles.each_with_index do |article, index|
+            .col-sm-10
+                = radio_button :news_item, :title, article['title']
+                %div.ml-2
+                    %h5 Title:
+                    = label :news_item, :title, article['title'], value: article['title']
+                    %br/
+                    %br/
+                    %h5 Link:
+                    %a{href: article['url']}= article['url']
+                    %br/
+                    %br/
+                    %h5 Description:
+                    %p= article['description']
+                = hidden_field :news_item, :link, value: article['url']
+                = hidden_field :news_item, :description, value: article['description']
+    
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
