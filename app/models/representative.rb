@@ -7,7 +7,6 @@ require 'net/http'
 
 class Representative < ApplicationRecord
   has_many :news_items, dependent: :delete_all
-  has_one_attached :photo_attachment
 
   def self.civic_api_to_representative_params(rep_info)
     representatives = []
@@ -25,14 +24,14 @@ class Representative < ApplicationRecord
     contact_address = create_contact_address(official)
     political_party, photo = extract_political_info(official)
 
-    rep = Representative.find_or_initialize_by(name: official.name, ocdid: ocdid)
+    rep = Representative.find_or_initialize_by(name: official.name)
     update_representative_info(rep, {
+                                 ocdid:           ocdid,
                                  title:           title,
                                  contact_address: contact_address,
                                  political_party: political_party,
                                  photo:           photo
                                })
-    attach_photo(rep, official.photo_url)
 
     rep.save
     rep
@@ -71,22 +70,6 @@ class Representative < ApplicationRecord
     photo = official.photo_url if official.respond_to?(:photo_url)
 
     [political_party, photo]
-  end
-
-  def self.attach_photo(rep, photo_url)
-    return if photo_url.blank?
-
-    begin
-      uri = URI.parse(photo_url)
-      downloaded_image = Net::HTTP.get_response(uri)
-
-      rep.photo_attachment.attach(
-        io:       StringIO.new(downloaded_image.body),
-        filename: "#{rep.name.parameterize.underscore}_photo.jpg"
-      )
-    rescue StandardError => e
-      Rails.logger.error("Error attaching photo for #{rep.name}: #{e.message}")
-    end
   end
 
   def self.update_representative_info(rep, info)
