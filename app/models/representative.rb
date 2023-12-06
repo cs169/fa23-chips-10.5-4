@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 # comment test
-require 'open-uri'
-
-require 'net/http'
 
 class Representative < ApplicationRecord
   has_many :news_items, dependent: :delete_all
