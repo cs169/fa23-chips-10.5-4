@@ -3,7 +3,6 @@
 require 'net/http'
 require 'json'
 
-
 class MyNewsItemsController < SessionController
   before_action :set_representative
   before_action :set_representatives_list
@@ -14,35 +13,15 @@ class MyNewsItemsController < SessionController
     @news_item = NewsItem.new
     @rep_id = params[:news_item][:representative_id] if params[:news_item][:representative_id]
     @issue = params[:news_item][:issue] if params[:news_item][:issue]
-    found_representative = @representatives_list.find { |name, id| id == @rep_id.to_i }
+    found_representative = @representatives_list.find { |_name, id| id == @rep_id.to_i }
     rep_name = found_representative.first
     @rep_name = rep_name
 
-    def remove_middle_name(full_name)
-      name_parts = full_name.split
-      if name_parts.length > 2
-        [name_parts.first, name_parts.last].join(' ')
-      else
-        full_name
-      end
-    end
-
-    def get_news(rep_name, issue)
-      rep_name = remove_middle_name(rep_name)
-      url = URI("https://gnews.io/api/v4/search?q=#{rep_name}%20#{issue}&lang=en&country=us&max=5&apikey=704753ec864b8230a64b15339095816e")
-      response = Net::HTTP.get(url)
-      data = JSON.parse(response)
-      articles = data["articles"]
-      return articles
-    end
-    
     @articles = get_news(rep_name, @issue)
   end
 
   # pre-form controller
-  def pre
-
-  end
+  def pre; end
 
   def edit; end
 
@@ -72,6 +51,23 @@ class MyNewsItemsController < SessionController
   end
 
   private
+
+  def remove_middle_name(full_name)
+    name_parts = full_name.split
+    if name_parts.length > 2
+      [name_parts.first, name_parts.last].join(' ')
+    else
+      full_name
+    end
+  end
+
+  def get_news(rep_name, issue)
+    rep_name = remove_middle_name(rep_name)
+    url = URI("https://gnews.io/api/v4/search?q=#{rep_name}%20#{issue}&lang=en&country=us&max=5&apikey=704753ec864b8230a64b15339095816e")
+    response = Net::HTTP.get(url)
+    data = JSON.parse(response)
+    data['articles']
+  end
 
   # pre-form to new parameters
   def news_item_default_params
